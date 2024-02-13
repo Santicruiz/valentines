@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #f9e6ea; /* Light pink background */
+            position: relative; /* Required for absolute positioning */
+        }
+        h1 {
+            color: #e63946; /* Reddish-pink text color */
+        }
+        button {
+            background-color: #a8dadc; /* Light blue button background */
+            color: #1d3557; /* Dark blue button text color */
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        /* Style for images at different angles */
+        .corner-image {
+            position: absolute;
+            width: 200px; /* Adjust the width of the images */
+            height: 200px; /* Adjust the height of the images */
+            object-fit: cover;
+        }
+
+        .top-left { top: 0; left: 0; transform: rotate(45deg); }
+        .top-right { top: 0; right: 0; transform: rotate(-45deg); }
+        .bottom-left { bottom: 0; left: 0; transform: rotate(-45deg); }
+        .bottom-right { bottom: 0; right: 0; transform: rotate(45deg); }
+        
+        /* New styles for additional images on the sides */
+        .side-image {
+            position: absolute;
+            width: 200px; /* Adjust the width of the images */
+            height: 200px; /* Adjust the height of the images */
+            object-fit: cover;
+            top: 50%; /* Center the image vertically */
+        }
+
+        .left-side { left: 0; transform: translateY(-50%); }
+        .right-side { right: 0; transform: translateY(-50%); }
+        
+        /* Additional style for cute pop-ups */
+        .popup-container {
+            background-color: #ffffff; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 300px;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .popup-content {
+            margin-bottom: 20px;
+        }
+
+        .close-button {
+            background-color: #a8dadc; /* Light blue button background */
+            color: #1d3557; /* Dark blue button text color */
+            font-size: 1em;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .popup-gif {
+            width: 100%; /* Make sure the GIF fills the container */
+            max-height: 200px; /* Limit the height of the GIF */
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <img class="corner-image top-left" src="5.jpeg" alt="Heart Image">
+    <img class="corner-image top-right" src="6.jpeg" alt="Flower Image">
+    <h1>Will You Be My Valentine?</h1>
+    <p>I want you to be your valentine, now and forever!</p>
+    <img src="heart.png" alt="Heart Image" width="700">
+    <br> <!-- Add a line break to move the buttons to the next line -->
+    <button id="yesButton" onclick="showCutePopup('yes')">Yes</button>
+    <button onclick="makeYesButtonBigger()">No</button>
+    <img class="corner-image bottom-left" src="1.jpeg" alt="Balloon Image">
+    <img class="corner-image bottom-right" src="2.jpeg" alt="Cupid Image">
+
+    <!-- Additional images on the sides -->
+    <img class="side-image left-side" src="3.jpeg" alt="Star Image">
+    <img class="side-image right-side" src="4.jpeg" alt="Moon Image">
+
+    <!-- Cute pop-ups -->
+    <div class="popup-container" id="yesPopup">
+        <div class="popup-content">
+            <h2>I knew it! I love you!</h2>
+            <img class="popup-gif" src="yes.gif" alt="Cute Yes GIF">
+            <p>Get ready, we will have a date at 9 PM!</p>
+        </div>
+        <button class="close-button" onclick="closePopup('yesPopup')">Close</button>
+    </div>
+
+    <script>
+        var noButtonClicks = 0;
+
+        function showCutePopup(answer) {
+            if (answer === 'yes') {
+                var popupId = 'yesPopup';
+                var popup = document.getElementById(popupId);
+                popup.style.display = 'block';
+            }
+        }
+
+        function closePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            popup.style.display = 'none';
+        }
+
+        function makeYesButtonBigger() {
+            var yesButton = document.getElementById('yesButton');
+            noButtonClicks++;
+            yesButton.style.width = 150 + noButtonClicks * 10 + 'px'; // Increase width (adjust as needed)
+            yesButton.style.height = 50 + noButtonClicks * 5 + 'px'; // Increase height (adjust as needed)
+        }
+    </script>
+</body>
+</html>
